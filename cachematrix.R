@@ -1,7 +1,6 @@
-## The following functions work with cache data in order to save some
-##time when doing the same calculation over the same data.
+##The makeCacheMatrix function creates an R object that stores a matrix
+##and its inverse in cache.
 
-##This function creates an R object that stores a matrix and its inverse.
 makeCacheMatrix <- function(x = matrix()) {
   inv <- NULL
   set <- function(y){
@@ -14,10 +13,9 @@ makeCacheMatrix <- function(x = matrix()) {
   list(set = set, get = get, setinv = setinv, getinv = getinv)
 }
 
-
-## This function access to the object created by makeCacheMatrix()
-##and gets the inverse of the matrix if it is stored in cache, 
-##or calculates the inverse of the matrix otherwise.
+## The cacheSolve function access to the object created by makeCacheMatrix()
+##and gets the inverse of this matrix if it is stored in cache, 
+##or calculates the inverse of this matrix otherwise.
 
 cacheSolve <- function(x, ...) {
   inv <- x$getinv()
